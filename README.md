@@ -1,0 +1,2 @@
+# EPA Carbon Monoxide AQI Analysis
+ This project involved analyzing air quality data from the EPA, focusing on the Air Quality Index (AQI) with respect to carbon monoxide levels. Using Python, I applied statistical analysis, hypothesis testing, and data visualization to assess pollution levels and identify trends across different U.S. regions. The project simulated real-world data analysis, leveraging techniques like probability distribution fitting, outlier detection, and sampling to support data-driven decision-making for environmental policy and public health initiatives.
