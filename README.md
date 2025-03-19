@@ -43,26 +43,34 @@ The analysis is based on the following datasets:
 - **date_local, state_name, county_name, city_name, local_site_name, parameter_name, units_of_measure**: Same as Dataset 1.
 - **aqi_log**: The natural logarithm of the AQI value for improved statistical analysis.
 
-## Data Processing Steps
+## Data Processing Steps  
 
-The data processing steps include:
+1. **Data Cleaning**: Load the dataset, handle missing values, and format key columns (`date_local`, `state_name`, `county_name`, `aqi`).  
+2. **Descriptive Statistics**: Compute mean, median, standard deviation, and percentiles to summarize AQI trends.  
+3. **Distribution Analysis**: Use log-transformed AQI values (`aqi_log`) to approximate normality, detect outliers via Z-scores.  
+4. **Random Sampling**: Apply the Central Limit Theorem to estimate the population mean AQI from sample data.  
+5. **Confidence Intervals**: Construct confidence intervals to quantify uncertainty in mean AQI estimates.  
+6. **Hypothesis Testing**: Conduct t-tests to compare AQI across regions and evaluate policy impacts.  
+7. **Visualization**: Use histograms, boxplots, and other charts to illustrate findings.
 
-1. **Loading and Cleaning Data**: The dataset is loaded into a pandas DataFrame, and missing values are handled to ensure data quality. Columns such as `date_local`, `state_name`, `county_name`, and `aqi` are cleaned and formatted for analysis.
+## Project Insights  
 
-2. **Descriptive Statistics**: Key statistics such as mean, median, standard deviation, and percentiles are computed to summarize the AQI data. This helps identify central tendencies and variability in air quality measurements.
+### **Descriptive Statistics**  
+- **Mean AQI: 6.76**, indicating good air quality.  
+- **75% of AQI values** are below **9**, suggesting most regions have satisfactory air quality.  
+- **Max AQI: 50**, well below the unsafe threshold of 100.  
 
-3. **Probability Distribution Analysis**: The AQI data is analyzed using probability distributions, with log-transformed AQI values (`aqi_log`) used to approximate a normal distribution. Z-scores are calculated to detect outliers and assess data spread.
+### **Distribution & Outliers**  
+- **Log-transformed AQI** approximates normality for analysis.  
+- **West Phoenix** is an outlier, requiring further investigation.  
 
-4. **Random Sampling**: Random samples are simulated to estimate the population mean AQI. The Central Limit Theorem is applied to validate the sampling distribution and ensure the sample mean approximates the population mean.
+### **Hypothesis Testing**  
+- **Los Angeles vs. California**: No significant AQI difference.  
+- **New York vs. Ohio**: New York has statistically lower AQI.  
+- **Michigan**: AQI not significantly above 10, unlikely to be impacted by policy.  
 
-5. **Confidence Intervals**: Confidence intervals are constructed to quantify the uncertainty in the estimated mean AQI. This provides a range of values within which the true population mean is likely to fall.
-
-6. **Hypothesis Testing**: Hypothesis tests are conducted to compare AQI values across different regions and assess policy impacts. For example:
-   - A two-sample t-test compares the mean AQI of Los Angeles County to the rest of California.
-   - A two-sample t-test compares the mean AQI of New York and Ohio.
-   - A one-sample t-test evaluates whether Michigan’s mean AQI exceeds the policy threshold of 10.
-
-7. **Visualization**: Data is visualized using histograms, boxplots, and other graphical tools to enhance interpretability and communicate findings effectively.
+### **Confidence Intervals**  
+- **California’s 95% CI**: **[10.36, 13.88]**, suggesting potential policy impact.
 
 ## Project Highlights
 
@@ -71,25 +79,6 @@ The data processing steps include:
 - **Hypothesis Testing**: Conducted hypothesis tests to compare AQI values across regions and assess policy impacts.
 - **Confidence Intervals**: Constructed confidence intervals to quantify uncertainty in mean AQI estimates.
 - **Visualizations**: Created boxplots and histograms to visualize AQI trends and distributions.
-
-## Project Insights
-
-### Descriptive Statistics
-- The **mean AQI** across the dataset is **6.76**, indicating relatively good air quality.
-- **75% of AQI values** are below **9**, suggesting that most regions have satisfactory air quality.
-- The **maximum AQI value** is **50**, which is well below the threshold of 100, indicating safe air quality even in the worst cases.
-
-### Probability Distribution Analysis
-- The **log-transformed AQI data** (`aqi_log`) approximates a normal distribution, making it suitable for statistical analysis.
-- **West Phoenix** was identified as an outlier with a significantly higher AQI value, suggesting the need for targeted interventions.
-
-### Hypothesis Testing
-- **Los Angeles County vs. Rest of California**: No statistically significant difference in AQI, indicating that air quality concerns are not uniquely concentrated in Los Angeles.
-- **New York vs. Ohio**: New York has a statistically lower AQI than Ohio, making it a more suitable location for a regional office if air quality is a priority.
-- **Michigan’s AQI**: Michigan’s mean AQI is not statistically greater than 10, suggesting it would not be affected by a new policy targeting states with higher AQI values.
-
-### Confidence Intervals
-- The **95% confidence interval** for California’s mean AQI is **[10.36, 13.88]**, indicating that California is likely to be impacted by the proposed policy.
 
 ## Future Work
 
